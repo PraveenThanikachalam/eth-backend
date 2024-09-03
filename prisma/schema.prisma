@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  address    String
+  hash       String
+  value      String
+  gasUsed    String
+  gasPrice   String
+  created_at DateTime @default(now())
+}
+
+model EthereumPrise {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  price     String
+  updatedAt DateTime @updatedAt
+}
