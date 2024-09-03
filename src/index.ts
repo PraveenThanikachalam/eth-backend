@@ -15,7 +15,7 @@ app.use("/api/transactions", transactionRoutes);
 app.use("/api/useExpenses", userExpenses);
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Server Started");
+  return res.send("Server Started");
 });
 
 fetchAndStoreEthereumPrice();
