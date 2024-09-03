@@ -14,6 +14,9 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/api/transactions", transactionRoutes_1.default);
 app.use("/api/useExpenses", userExpenses_1.default);
+app.get("/", (req, res) => {
+    res.send("Server Started");
+});
 (0, fetchPrice_1.default)();
 app.listen(port, () => {
     console.log(`Listening on port - ${port}`);

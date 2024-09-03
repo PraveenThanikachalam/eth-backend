@@ -14,10 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const prisma_1 = __importDefault(require("../prisma"));
+const COINGECKO_API_URL = process.env.COINGECKO_API_URL || "";
 function fetchAndStoreEthereumPrice() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield axios_1.default.get("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr");
+            const response = yield axios_1.default.get(COINGECKO_API_URL);
             const ethPrice = response.data.ethereum.inr.toString();
             yield prisma_1.default.ethereumPrise.create({
                 data: {
